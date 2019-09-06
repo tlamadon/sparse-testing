@@ -3,12 +3,15 @@ library(Matrix)
 library(data.table)
 
 make.sparse.mat <- function(nn,nz.fact = 3) {
-  nz = 3*nn
-  i <- sort( c(sample.int(nn,nz,replace=T) ,1 ,nn) );
-  j <- sort( c(sample.int(nn,nz,replace=T) ,1 ,nn) );
-  x <- rnorm(nz+2)
-  dd = rbind(data.table(i=i,j=j,x=x),data.table(i=j,j=i,x=x)) # create symetric matrix
-  dd = rbind(dd[i!=j], data.table(i=1:nn,j=1:nn,x=rnorm(nn)))
+  nz = nz.fact*nn
+  i <- c(sample.int(nn,nz,replace=T) ,1 ,nn);
+  j <- c(sample.int(nn,nz,replace=T) ,1 ,nn);
+  #x <- rnorm(nz+2)
+  x <- sample.int(15,nz+2,replace=T) + 0.5
+  dd = data.table(i=j,j=i,x=x)
+  dd = dd[i<j,list(x=x[1]),list(i,j)]
+  dd = rbind(dd,dd[,list(i=j,j=i,x)]) # create symetric matrix
+  dd = rbind(dd[i!=j], data.table(i=1:nn,j=1:nn,x=20))
   A <- sparseMatrix(dd$i, dd$j, x = dd$x)
   return(A)
 }
@@ -23,21 +26,13 @@ make.sparse.mat.asframe <- function(nn,nz.fact = 3) {
   return(dd)
 }
 
+A = make.sparse.mat(20,5)
+writeMM(A, file=sprintf("~/git/sparse-testing/mats/mat_small.mtx",i))
+
 for (i in 3:6) {
   A = make.sparse.mat(10^i)
   writeMM(A, file=sprintf("~/git/sparse-testing/mats/mat_%i_3.mtx",i))
 }
-
-A_2_3 = make.sparse.mat(100)
-A_3_3 = make.sparse.mat(1000)
-writeMM(A_4_3, file="~/git/sparse-testing/mats/mat_4_3.mtx")
-A_5_3 = make.sparse.mat(10000)
-writeMM(A_5_3, file="~/git/sparse-testing/mats/mat_5_3.mtx")
-A_6_3 = make.sparse.mat(100000)
-writeMM(A_6_3, file="~/git/sparse-testing/mats/mat_6_3.mtx")
-A_7_3 = make.sparse.mat(1000000)
-writeMM(A_7_3, file="~/git/sparse-testing/mats/mat_7_3.mtx")
-
 
 ### ---  some simple solvers --------
 
