@@ -15,14 +15,16 @@ We then draw a random normal vector of the same size and solve the linear system
 |        |                            | 6    | 3    |           | 3.2   |
 |        | bicg                       | 4    | 3    |           | 3.2   |
 |        |                            | 5    | 3    |           | 37    |
+|        | pcg                        | 5    | 3    |           | 0.02  |
+|        |                            | 6    | 3    |           | 0.07  |
 | R      | Matrix package             | 5    | 3    | double    | 0.383 |
 |        |                            | 6    | 3    | double    | 8.02  |
 |        | Spam package               | 5    | 3    | double    | 1.5   |
 |        |                            | 6    | 3    | double    | 9.9   |
-| Python | scipy.sparse.linalg        | 4    | 3    | 64        | 37    |
-|        | pypardiso.spsolve          | 4    | 3    | 64        | 28    |
+| Python | scipy.sparse.linalg        | 4    | 3    | double    | 37    |
+|        | pypardiso.spsolve          | 4    | 3    | double    | 28    |
 |        | scipy.sparse.linalg.dsolve | 4    | 3    | double    | 30    |
-| C++    | Eigen::SimplicialLDLT      | 6    | 3    | double    | 4     |
+| C++    | Eigen::SimplicialLDLT      | 6    | 3    | double    | 9     |
 |        |                            | 4    | 3    | double    | 0.07  |
 |        | Eigen::SparseLU            | 4    | 3    | double    | 0.9   |
 
