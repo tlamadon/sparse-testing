@@ -5,26 +5,49 @@ We then draw a random normal vector of the same size and solve the linear system
 
 
 
-## temporary benchmarks
+## preliminary benchmarks
 
 
 
-| system | solver              | lnn  | nnz  | precision | time  |
-| ------ | :------------------ | ---- | ---- | --------- | ----- |
-| matlab | default             | 5    | 3    |           | 0.28  |
-|        |                     | 6    | 3    |           | 3.2   |
-|        | bicg                | 4    | 3    |           | 3.2   |
-|        |                     | 5    | 3    |           | 37    |
-| R      | Matrix package      | 5    | 3    | double    | 0.383 |
-|        |                     | 6    | 3    | double    | 8.02  |
-|        | Spam package        | 5    | 3    | double    | 1.5   |
-|        |                     | 6    | 3    | double    | 9.9   |
-| Python | scipy.sparse.linalg | 4    | 3    | 64        | 37    |
-|        | pypardiso.spsolve   | 4    | 3    | 64        | 28    |
+| system | solver                     | lnn  | nnz  | precision | time  |
+| ------ | :------------------------- | ---- | ---- | --------- | ----- |
+| matlab | default                    | 5    | 3    |           | 0.28  |
+|        |                            | 6    | 3    |           | 3.2   |
+|        | bicg                       | 4    | 3    |           | 3.2   |
+|        |                            | 5    | 3    |           | 37    |
+| R      | Matrix package             | 5    | 3    | double    | 0.383 |
+|        |                            | 6    | 3    | double    | 8.02  |
+|        | Spam package               | 5    | 3    | double    | 1.5   |
+|        |                            | 6    | 3    | double    | 9.9   |
+| Python | scipy.sparse.linalg        | 4    | 3    | 64        | 37    |
+|        | pypardiso.spsolve          | 4    | 3    | 64        | 28    |
+|        | scipy.sparse.linalg.dsolve | 4    | 3    | double    | 30    |
+
+ 	
 
 
 
+## Links
 
+https://scipy-lectures.org/advanced/scipy_sparse/solvers.html
+
+https://eigen.tuxfamily.org/dox/group__TopicSparseSystems.html
+
+https://en.wikipedia.org/wiki/UMFPACK
+
+https://scicomp.stackexchange.com/questions/1925/what-are-the-best-python-packages-interfaces-to-sparse-direct-solvers
+
+https://docs.scipy.org/doc/scipy/reference/sparse.linalg.html
+
+https://www.math.u-bordeaux.fr/~durufle/seldon/python.php
+
+http://mumps.enseeiht.fr/index.php?page=faq
+
+https://anaconda.org/conda-forge/mumps
+
+
+
+[Sparse suite list of sparse matrices to test on](https://sparse.tamu.edu/)
 
 
 

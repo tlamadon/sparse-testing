@@ -7,6 +7,7 @@ from scipy.sparse.linalg import spsolve
 from scipy.sparse import csc_matrix, linalg as sla
 import scipy.sparse.linalg as spla
 import scipy
+from scipy.sparse.linalg.dsolve import linsolve
 
 import pypardiso
 
@@ -24,13 +25,14 @@ dd = pd.concat([ dd,diag])
 M = csc_matrix( (dd.x, (dd.i, dd.j)), shape=(nn, nn))
 b = np.random.normal(size= nn)
 
-# M = M.tocsr()
+#M = M.tocsr()
 time_start = time.clock()
 #lu = sla.splu(M)
 #x = spla.spsolve(M,b,use_umfpack=False)
 #x = lu.solve(b)
 # x = spla.cg(M,b)[0]
-x = pypardiso.spsolve(M,b)
+# x = pypardiso.spsolve(M,b)
+x = linsolve.spsolve(M, rhs)
 time_elapsed = (time.clock() - time_start)
 mse = np.power(M.dot(x) - b, 2.0).mean()
 #mse= 0
