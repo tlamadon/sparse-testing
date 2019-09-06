@@ -22,6 +22,9 @@ We then draw a random normal vector of the same size and solve the linear system
 | Python | scipy.sparse.linalg        | 4    | 3    | 64        | 37    |
 |        | pypardiso.spsolve          | 4    | 3    | 64        | 28    |
 |        | scipy.sparse.linalg.dsolve | 4    | 3    | double    | 30    |
+| C++    | Eigen::SimplicialLDLT      | 6    | 3    | double    | 4     |
+|        |                            | 4    | 3    | double    | 0.07  |
+|        | Eigen::SparseLU            | 4    | 3    | double    | 0.9   |
 
  	
 
@@ -48,6 +51,10 @@ https://anaconda.org/conda-forge/mumps
 
 
 [Sparse suite list of sparse matrices to test on](https://sparse.tamu.edu/)
+
+[Suite sparse page](http://faculty.cse.tamu.edu/davis/suitesparse.html)
+
+
 
 
 
